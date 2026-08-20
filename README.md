@@ -48,8 +48,16 @@ pnpm build      # biên dịch ra dist/
 | `PSHARE_MCP_PORT` | `7317` | port khi chạy transport HTTP |
 | `PSHARE_MCP_ALLOWED_HOSTS` | *(không đặt)* | danh sách host được phép, cách nhau bằng dấu phẩy, dùng để bật DNS-rebinding protection khi bind `0.0.0.0` |
 
-> Nếu Pshare chạy ở máy/IP khác trong LAN (không phải localhost), luôn set `PSHARE_BASE_URL` trỏ đúng
-> tới máy đó, ví dụ `PSHARE_BASE_URL=http://192.168.3.7:5173`.
+> **`localhost` chỉ đúng khi MCP server chạy trên đúng cái máy đang chạy Pshare.** `localhost` luôn
+> trỏ về "chính máy đang chạy process đó" — nên nếu bạn cài MCP này trên máy/laptop **khác** với máy
+> chạy Pshare (kể cả cùng LAN), bắt buộc phải đổi thành IP thật của máy chạy Pshare. Ví dụ, nếu Pshare
+> đang chạy ở máy có IP `192.168.3.7`:
+>
+> ```bash
+> PSHARE_BASE_URL=http://192.168.3.7:5173 claude mcp add pshare-share -- node "$(pwd)/dist/index.js"
+> ```
+>
+> Chỉ giữ mặc định `localhost` khi bạn chạy MCP (stdio) ngay trên cùng máy đang chạy Pshare.
 
 ## Chạy thử độc lập
 
@@ -74,7 +82,7 @@ Sau khi clone + build (xem mục Cài đặt ở trên), từ trong thư mục `
 claude mcp add pshare-share -- node "$(pwd)/dist/index.js"
 ```
 
-Muốn trỏ tới Pshare ở máy khác, truyền env qua `-e`:
+Muốn trỏ tới Pshare ở máy khác, truyền env qua `-e` (xem lưu ý về `localhost` ở mục Cấu hình):
 
 ```bash
 claude mcp add pshare-share \
