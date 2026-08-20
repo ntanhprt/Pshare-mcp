@@ -1,0 +1,26 @@
+{
+  "name": "pshare-share-mcp",
+  "version": "1.0.0",
+  "description": "MCP server that lets an AI upload files/folders to Pshare and get back a share link",
+  "type": "module",
+  "bin": {
+    "pshare-share-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "dev:http": "tsx src/index.ts --http",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "start:http": "node dist/index.js --http"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}
