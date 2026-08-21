@@ -39,6 +39,20 @@ pnpm install
 pnpm build      # biên dịch ra dist/
 ```
 
+## Cập nhật lên bản mới
+
+```bash
+cd Pshare-mcp
+git pull
+pnpm install
+pnpm build
+```
+
+- Không cần chạy lại `claude mcp add` — path `dist/index.js` không đổi, Claude Code sẽ tự dùng bản build mới ở lần chạy kế tiếp.
+- **Claude Code**: mở session mới (session đang chạy không tự nhận bản mới giữa chừng).
+- **Claude Desktop**: khởi động lại app.
+- Đang chạy transport HTTP (`pnpm start:http`)? Phải tắt process cũ và chạy lại lệnh đó để nhận code mới.
+
 ## Cấu hình (biến môi trường)
 
 | biến | mặc định | mô tả |
