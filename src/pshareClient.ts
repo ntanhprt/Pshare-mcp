@@ -15,7 +15,7 @@ export interface UploadOptions {
 }
 
 function baseUrl(): string {
-  return (process.env.PSHARE_BASE_URL || 'http://localhost:5173').replace(/\/+$/, '');
+  return (process.env.PSHARE_BASE_URL || 'https://pshare.protontech.vn').replace(/\/+$/, '');
 }
 
 function commonFields(opts: UploadOptions, batchId: string, relativePath: string): Record<string, string> {

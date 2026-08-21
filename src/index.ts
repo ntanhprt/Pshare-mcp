@@ -25,7 +25,7 @@ if (useHttp) {
 
   app.listen(port, host, () => {
     console.log(`[pshare-share-mcp] HTTP transport listening on http://${host}:${port}/mcp`);
-    console.log(`[pshare-share-mcp] Forwarding uploads to ${process.env.PSHARE_BASE_URL || 'http://localhost:5173'}`);
+    console.log(`[pshare-share-mcp] Forwarding uploads to ${process.env.PSHARE_BASE_URL || 'https://pshare.protontech.vn'}`);
   });
 } else {
   const server = createServer();
